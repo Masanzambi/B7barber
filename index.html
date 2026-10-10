@@ -1,0 +1,924 @@
+<!DOCTYPE html><html class="dark" lang="pt-BR"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-fixed-variant": "#444749",
+          "on-background": "#dde2f8",
+          "surface-bright": "#33394a",
+          "secondary-container": "#00a6e0",
+          "on-secondary-fixed-variant": "#004c69",
+          "secondary": "#7bd0ff",
+          "on-secondary-fixed": "#001e2c",
+          "error": "#ffb4ab",
+          "on-secondary": "#00354a",
+          "primary-fixed": "#ffdada",
+          "background": "#070b14",
+          "on-error-container": "#ffdad6",
+          "inverse-surface": "#dde2f8",
+          "tertiary-fixed": "#e0e3e5",
+          "surface-container": "#151f32",
+          "surface-container-low": "#0f172a",
+          "on-primary-container": "#fffaf9",
+          "surface-container-high": "#1a263e",
+          "on-primary": "#ffffff",
+          "tertiary-fixed-dim": "#c4c7c9",
+          "surface-tint": "#e11d48",
+          "on-primary-fixed": "#40000c",
+          "on-surface": "#dde2f8",
+          "surface-dim": "#070b14",
+          "on-surface-variant": "#94a3b8",
+          "error-container": "#93000a",
+          "on-error": "#690005",
+          "secondary-fixed-dim": "#7bd0ff",
+          "tertiary-container": "#717476",
+          "inverse-on-surface": "#2a3040",
+          "on-primary-fixed-variant": "#920028",
+          "on-tertiary-container": "#f9fbfd",
+          "primary": "#e11d48",
+          "primary-fixed-dim": "#ffb3b6",
+          "on-secondary-container": "#00374d",
+          "surface-variant": "#1e293b",
+          "inverse-primary": "#be0037",
+          "outline": "#23314d",
+          "on-tertiary-fixed": "#191c1e",
+          "tertiary": "#c4c7c9",
+          "primary-container": "#e11d48",
+          "secondary-fixed": "#c4e7ff",
+          "surface": "#0b1120",
+          "outline-variant": "#1e2c45",
+          "surface-container-lowest": "#050811",
+          "surface-container-highest": "#23314d",
+          "on-tertiary": "#2d3133"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-lg": "3rem",
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "margin-md": "2rem",
+          "space-xl": "2rem",
+          "space-md": "1rem",
+          "gutter-md": "1.5rem",
+          "gutter-lg": "2rem",
+          "gutter": "1rem",
+          "margin": "1rem",
+          "space-lg": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-lg": ["Plus Jakarta Sans"],
+          "label-lg": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "display-lg-mobile": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "label-sm": ["Plus Jakarta Sans"],
+          "title-lg": ["Plus Jakarta Sans"],
+          "display-lg": ["Plus Jakarta Sans"],
+          "headline-lg-mobile": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "title-sm": ["Plus Jakarta Sans"],
+          "label-caps": ["Plus Jakarta Sans"],
+          "tabular-price": ["Plus Jakarta Sans"],
+          "tabular-time": ["Plus Jakarta Sans"],
+          "display-mobile": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+          "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+          "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+          "title-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+          "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+          "tabular-price": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "tabular-time": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+          "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+        }
+      }
+    }
+  };
+</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#070b14;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-[#070b14] text-on-surface font-body-md text-body-md flex flex-col min-h-screen antialiased selection:bg-primary selection:text-white"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0b1120]/90 backdrop-blur-xl border-b border-[#23314d]/60 shadow-[0_1px_12px_rgba(0,0,0,0.6)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="B7 Barber Logo" class="h-9 w-9 rounded-full object-cover flex-shrink-0 ring-2 ring-primary/40 p-0.5 bg-[#0b1120]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkqoOZzT_w6Z8DyrS9mlRTr5IldJ6lsjxUChM2jHuS6fQvOI1-JkraKz9xbH3Ut49M_RdUvt-xcaO45-N82SGeEuBS8Ja_v3pab7Vxs_xdcWdSbsrQgtn7M9jzNUPkC5T0RKRtPJUeGhri8dJZVAHP8_iuL-UHYn5O-SomS-Am0fK4xV9fyLc-iP5-kpY-Kw-8VVxijzyW1eNauRWl_PTn0rngfnR5GrwoMZAxu2kL8xF01hqER9_umpqqm-4y1yk77To"><div class="flex flex-col min-w-0"><span class="font-title-sm text-title-sm text-on-surface font-bold truncate leading-tight tracking-tight">B7 Barber</span><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px] text-primary">location_on</span><span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant truncate">SoHo Lounge</span></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Call or Chat" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-secondary hover:bg-[#151f32] transition-colors"><span class="material-symbols-outlined text-[20px]">chat</span></button><a href="#auth-section" aria-label="Login ou Cadastro" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_12px_rgba(225,29,72,0.4)] active:scale-95 transition-transform"><span class="material-symbols-outlined text-white text-[17px]">person</span></a></div></div></header><main class="flex-1 flex flex-col w-full bg-[#070b14] pt-16 pb-24"><div class="flex flex-col w-full pb-16 select-none">
+<!-- 1. Hero Imersivo -->
+<section class="relative w-full overflow-hidden">
+<div class="relative w-full h-72">
+<div class="w-full h-full bg-cover bg-center" data-alt="Espaço real B7 Barber com cadeiras personalizadas, espelhos estilizados e ambientação moderna." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuD_JlH83twY6onaO4OAImxIm71kJUEhGpbEwEtkkfWMZ9IA6SDjwls8drnLOzd89rWIh-gwlu1W2kAw8abJZGiC6Z8FXiYiY89hWOBjAaquvc8gW6KkM0oZf0mqSD_KiKv-wdyASwcQSE3GoNoe8hOF6Q9YdmuXcxddRxZu-xDTtPpemSU0P6-FWj32PEaz1Qnw_1CGaLD_W5NYLjF1wuDMfBfS85nKOuxEYp76_kWgzlci73X9lCOtYXT1LJNy-qNkXW0&quot;); background-position: center 35%;">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/70 to-transparent"></div>
+<!-- Badges Superiores Flutuantes -->
+<div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#070b14]/85 border border-[#23314d] backdrop-blur-md shadow-md">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="font-tabular-price text-body-sm text-on-surface font-semibold">4.9</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">(428)</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#151f32]/90 border border-[#23314d] backdrop-blur-md shadow-md">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface font-semibold">Aberto até 20:00</span>
+</div>
+</div>
+</div>
+<!-- Conteúdo Hero -->
+<div class="px-margin -mt-16 relative z-10 flex flex-col">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Grooming Club &amp; Lounge</span>
+</div>
+<h1 class="font-display-mobile text-display-mobile text-on-surface leading-tight tracking-tight font-extrabold">B7 Barber</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+        Cortes clássicos, barba na toalha quente e estética masculina de alta precisão em um ambiente privativo e acolhedor.
+      </p>
+<!-- Ações Rápidas -->
+<div class="grid grid-cols-3 gap-2 mt-5">
+<button class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-[#151f32] border border-[#23314d] active:bg-[#1a263e] transition-all shadow-sm group" id="btn-maps" onclick="triggerHaptic('maps')">
+<span class="material-symbols-outlined text-secondary text-[22px] group-active:scale-95 transition-transform">directions</span>
+<span class="font-label-md text-label-md text-on-surface mt-1 font-semibold">Como chegar</span>
+</button>
+<a class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-[#151f32] border border-[#23314d] active:bg-[#1a263e] transition-all shadow-sm group" href="tel:+5511999998888">
+<span class="material-symbols-outlined text-primary text-[22px] group-active:scale-95 transition-transform">call</span>
+<span class="font-label-md text-label-md text-on-surface mt-1 font-semibold">Ligar / Whats</span>
+</a>
+<button class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-[#151f32] border border-[#23314d] active:bg-[#1a263e] transition-all shadow-sm group" id="btn-share" onclick="shareShop()">
+<span class="material-symbols-outlined text-secondary text-[22px] group-active:scale-95 transition-transform">share</span>
+<span class="font-label-md text-label-md text-on-surface mt-1 font-semibold">Compartilhar</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. Localização & Horários Info Card -->
+<section class="px-margin mt-6">
+<div class="p-4 rounded-xl bg-[#151f32] border border-[#23314d] shadow-lg flex flex-col gap-4">
+<!-- Endereço -->
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#0f172a] border border-[#23314d] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider font-semibold">Localização</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold leading-snug mt-0.5">Estrada de Curicica, Nº 136</p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Curicica, Rio de Janeiro - RJ</span>
+</div>
+</div>
+<!-- Horários Expansíveis -->
+<div class="bg-[#0f172a] border border-[#23314d]/70 rounded-lg p-3">
+<button class="w-full flex items-center justify-between text-left" id="toggle-hours" onclick="toggleSchedule()">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">schedule</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Horários de Atendimento</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform duration-300" id="hours-icon">expand_more</span>
+</button>
+<div class="hidden mt-3 pt-3 flex flex-col gap-2 border-t border-[#23314d]/50" id="schedule-details">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Segunda a Sexta</span>
+<span class="text-on-surface font-tabular-time font-semibold">09:00 — 20:00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Sábado</span>
+<span class="text-on-surface font-tabular-time font-semibold">09:00 — 20:00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Domingo &amp; Feriados</span>
+<span class="text-on-surface font-tabular-time font-semibold">10:00 — 16:00</span>
+</div>
+</div>
+</div>
+<!-- Facilidades / Amenidades -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-[#0f172a] border border-[#23314d]/60">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_parking</span>
+<span class="font-body-sm text-[11px] text-on-surface mt-1 leading-tight font-medium">Valet Parking</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-[#0f172a] border border-[#23314d]/60">
+<span class="material-symbols-outlined text-secondary text-[20px]">wifi</span>
+<span class="font-body-sm text-[11px] text-on-surface mt-1 leading-tight font-medium">Wi-Fi Ultra</span>
+</div>
+<div class="flex flex-col items-center text-center p-2 rounded-lg bg-[#0f172a] border border-[#23314d]/60">
+<span class="material-symbols-outlined text-primary text-[20px]">local_bar</span>
+<span class="font-body-sm text-[11px] text-on-surface mt-1 leading-tight font-medium">Bar &amp; Café Bar</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Barbeiros em Destaque (Carrossel Horizontal) -->
+<section class="mt-8 flex flex-col">
+<div class="px-margin flex items-center justify-between mb-3">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">Mestres da Navalha</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Especialistas prontos para elevar sua imagem</p>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-primary font-bold tracking-wider">3 Barbeiros</span>
+</div>
+<!-- Scroll Horizontal -->
+<div class="flex gap-3 overflow-x-auto px-margin no-scrollbar pb-2 pt-1">
+<!-- Barbeiro 1 -->
+<div class="min-w-[240px] max-w-[240px] p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] shadow-md flex flex-col shrink-0 relative group">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm bg-[#0f172a] ring-2 ring-[#23314d]" alt="Foto do barbeiro Artur" src="imagens/arthur-.png">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary flex items-center justify-center text-white shadow">
+<span class="material-symbols-outlined text-[12px] font-bold">star</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-on-surface font-bold truncate">Artur</span>
+<span class="font-label-caps text-[10px] text-secondary font-bold uppercase tracking-wider">Master Barber</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="font-body-sm text-xs font-bold text-on-surface">5.0</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">(189)</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant mt-2.5 line-clamp-2">
+          Especialista supremo em fade milimétrico, degradê navalhado e arquitetura de barba longa.
+        </p>
+<div class="mt-3 pt-2.5 flex items-center justify-between bg-[#0f172a] border border-[#23314d]/60 rounded-lg px-2.5 py-1.5">
+<span class="font-body-sm text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Próximo: 14:30
+          </span>
+<button class="font-label-caps text-label-caps uppercase text-primary font-bold active:opacity-75" onclick="selectSpecialist(this, 'Artur')">
+            Escolher
+          </button>
+</div>
+</div>
+<!-- Barbeiro 2 -->
+<div class="min-w-[240px] max-w-[240px] p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] shadow-md flex flex-col shrink-0 relative group">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm bg-[#0f172a] ring-2 ring-[#23314d]" alt="Foto do barbeiro Fabio" src="imagens/Fabio.png">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-[12px] font-bold">content_cut</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-on-surface font-bold truncate">Fabio</span>
+<span class="font-label-caps text-[10px] text-primary font-bold uppercase tracking-wider">Visagista</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="font-body-sm text-xs font-bold text-on-surface">4.9</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">(142)</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant mt-2.5 line-clamp-2">
+          Referência em tesoura artesanal, cortes executivos e harmonização facial de contorno.
+        </p>
+<div class="mt-3 pt-2.5 flex items-center justify-between bg-[#0f172a] border border-[#23314d]/60 rounded-lg px-2.5 py-1.5">
+<span class="font-body-sm text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Próximo: 15:00
+          </span>
+<button class="font-label-caps text-label-caps uppercase text-primary font-bold active:opacity-75" onclick="selectSpecialist(this, 'Fabio')">
+            Escolher
+          </button>
+</div>
+</div>
+<!-- Barbeiro 3 -->
+<div class="min-w-[240px] max-w-[240px] p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] shadow-md flex flex-col shrink-0 relative group">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm bg-[#0f172a] ring-2 ring-[#23314d]" alt="Foto do barbeiro Ricardo" src="imagens/ricardo-.png">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#23314d] text-secondary flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-[12px] font-bold">spa</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-on-surface font-bold truncate">Ricardo</span>
+<span class="font-label-caps text-[10px] text-secondary font-bold uppercase tracking-wider">Barboterapia</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="font-body-sm text-xs font-bold text-on-surface">4.9</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">(97)</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant mt-2.5 line-clamp-2">
+          Mestre em vapor de ozônio, hidratação de barba com toalha fervente e camuflagem capilar.
+        </p>
+<div class="mt-3 pt-2.5 flex items-center justify-between bg-[#0f172a] border border-[#23314d]/60 rounded-lg px-2.5 py-1.5">
+<span class="font-body-sm text-[11px] text-secondary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Próximo: 16:15
+          </span>
+<button class="font-label-caps text-label-caps uppercase text-primary font-bold active:opacity-75" onclick="selectSpecialist(this, 'Ricardo')">
+            Escolher
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Menu de Serviços por Categorias -->
+<section class="mt-8 px-margin flex flex-col">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">Tabela de Serviços</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Valores oficiais B7 Barber Curicica</p>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-secondary font-bold" id="selected-counter">0 selecionados</span>
+</div>
+<!-- Categorias / Filtros -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1.5 pt-0.5" id="category-tabs">
+<button class="category-tab active px-4 py-2 rounded-full bg-primary text-white font-label-md text-label-md font-bold transition-all shrink-0 shadow-[0_2px_8px_rgba(225,29,72,0.4)]" onclick="switchTab(this, 'all')">
+        Todos (12)
+      </button>
+<button class="category-tab px-4 py-2 rounded-full bg-[#151f32] border border-[#23314d] text-on-surface-variant font-label-md text-label-md font-semibold transition-all shrink-0 hover:border-primary/50" onclick="switchTab(this, 'cabelo')">
+        Cabelo
+      </button>
+<button class="category-tab px-4 py-2 rounded-full bg-[#151f32] border border-[#23314d] text-on-surface-variant font-label-md text-label-md font-semibold transition-all shrink-0 hover:border-primary/50" onclick="switchTab(this, 'barba')">
+        Barba &amp; Detalhes
+      </button>
+<button class="category-tab px-4 py-2 rounded-full bg-[#151f32] border border-[#23314d] text-on-surface-variant font-label-md text-label-md font-semibold transition-all shrink-0 hover:border-primary/50" onclick="switchTab(this, 'combos')">
+        Combos
+      </button>
+<button class="category-tab px-4 py-2 rounded-full bg-[#151f32] border border-[#23314d] text-on-surface-variant font-label-md text-label-md font-semibold transition-all shrink-0 hover:border-primary/50" onclick="switchTab(this, 'quimica')">
+        Químicas &amp; Spa
+      </button>
+</div>
+<!-- Lista de Serviços B7 Barber -->
+<div class="flex flex-col gap-2.5 mt-4" id="services-list">
+<!-- 1. Corte -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="cabelo all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">content_cut</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Corte</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Corte tradicional, degradê ou social</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">35</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Corte', 35)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 2. Bigode -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="barba all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">face_6</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Bigode</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Alinhamento e acabamento na lâmina</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">5</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Bigode', 5)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 3. Cavanhaque -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="barba all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">face</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Cavanhaque</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Desenho, alinhamento e aparo preciso</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">15</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Cavanhaque', 15)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 4. Corte infantil -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="cabelo all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">child_care</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Corte infantil</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Atendimento paciente e especializado para crianças</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">40</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Corte infantil', 40)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 5. Corte + Barba (Destaque Mais Pedido) -->
+<div class="service-card p-4 rounded-xl bg-[#151f32] border border-primary/50 transition-all duration-200 shadow-lg relative overflow-hidden flex flex-col gap-2.5" data-category="combos all">
+<div class="absolute top-0 right-0 px-3 py-1 bg-primary text-white rounded-bl-xl font-label-caps text-[10px] font-bold tracking-wider uppercase shadow-sm">
+          Mais Pedido
+        </div>
+<div class="flex items-start justify-between gap-2 pr-20">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">stars</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold">Corte + Barba</h3>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-caps text-label-caps uppercase text-secondary font-bold">Combo Clássico B7 Barber</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-sm text-on-surface-variant leading-snug">Corte completo com alinhamento e finalização de barba navalhada.</p>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-baseline gap-1">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-primary font-extrabold">60</span>
+</div>
+<button class="service-btn px-4 py-2 rounded-lg bg-primary hover:bg-[#be0037] text-white font-label-md text-label-md font-bold transition-all flex items-center gap-1.5 active:scale-95 shadow-sm" onclick="toggleService(this, 'Corte + Barba', 60)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 6. Corte + Pigmentação -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="combos cabelo all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">brush</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Corte + Pigmentação</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Corte estiloso com cobertura e destaque óptico</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">60</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Corte + Pigmentação', 60)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 7. Hidratação -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="quimica all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">water_drop</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Hidratação</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Nutrição profunda dos fios e restauração de brilho</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">15</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Hidratação', 15)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 8. Limpeza de Pele -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="quimica all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">spa</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Limpeza de Pele</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Esfoliação e remoção de impurezas faciais</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">15</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Limpeza de Pele', 15)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 9. Sobrancelha -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="barba all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">visibility</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Sobrancelha</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Design masculino na navalha ou pinça</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">5</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Sobrancelha', 5)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 10. Pezinho -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="cabelo barba all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">linear_scale</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Pezinho</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Contorno e acabamento das linhas do cabelo</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-baseline gap-1 text-right">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">10</span>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Pezinho', 10)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 11. Nevou -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="quimica all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">ac_unit</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Nevou</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Platinado completo profissional</span>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">A partir de</span>
+<div class="flex items-baseline gap-1">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">100</span>
+</div>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Nevou', 100)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+<!-- 12. Reflexo -->
+<div class="service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3" data-category="quimica all">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">flare</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold truncate">Reflexo</h3>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Luzes e mechas masculinas alinhadas</span>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">A partir de</span>
+<div class="flex items-baseline gap-1">
+<span class="font-label-caps text-xs text-on-surface-variant">R$</span>
+<span class="font-tabular-price text-headline-md text-on-surface font-extrabold">100</span>
+</div>
+</div>
+<button class="service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm" onclick="toggleService(this, 'Reflexo', 100)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Agendar</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Avaliações & Depoimentos Recentes -->
+<section class="mt-8 px-margin flex flex-col gap-4" id="club-membership">
+  <header class="flex flex-col gap-1">
+    <span class="font-label-caps text-[10px] text-primary font-bold uppercase tracking-wider">B7 Barber Club · Assinatura mensal</span>
+    <h2 class="font-title-sm text-title-sm text-on-surface font-bold">Escolha seu plano</h2>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">O Club e seus benefícios são exclusivos para membros com assinatura mensal ativa.</p>
+  </header>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <article class="p-4 rounded-xl bg-[#151f32] border border-[#23314d] flex flex-col gap-3">
+      <div><h3 class="font-title-sm text-on-surface font-bold">Corte</h3><p class="text-xs text-on-surface-variant">Plano mensal</p></div>
+      <p class="text-2xl text-on-surface font-extrabold">R$ 84,90<span class="ml-1 text-xs font-medium text-on-surface-variant">/mês</span></p>
+      <a class="flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 text-sm font-bold text-white hover:bg-[#be0037]" href="login.html?mode=register&amp;plan=corte">Assinar Corte</a>
+    </article>
+    <article class="p-4 rounded-xl bg-[#151f32] border border-[#23314d] flex flex-col gap-3">
+      <div><h3 class="font-title-sm text-on-surface font-bold">Barba</h3><p class="text-xs text-on-surface-variant">Plano mensal</p></div>
+      <p class="text-2xl text-on-surface font-extrabold">R$ 79,90<span class="ml-1 text-xs font-medium text-on-surface-variant">/mês</span></p>
+      <a class="flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 text-sm font-bold text-white hover:bg-[#be0037]" href="login.html?mode=register&amp;plan=barba">Assinar Barba</a>
+    </article>
+    <article class="p-4 rounded-xl bg-[#151f32] border border-[#23314d] flex flex-col gap-3">
+      <div><h3 class="font-title-sm text-on-surface font-bold">Corte + barba</h3><p class="text-xs text-on-surface-variant">Plano mensal</p></div>
+      <p class="text-2xl text-on-surface font-extrabold">R$ 149,50<span class="ml-1 text-xs font-medium text-on-surface-variant">/mês</span></p>
+      <a class="flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 text-sm font-bold text-white hover:bg-[#be0037]" href="login.html?mode=register&amp;plan=corte-barba">Assinar Corte + barba</a>
+    </article>
+  </div>
+  <p class="text-xs text-on-surface-variant" role="note">A assinatura e o acesso aos benefícios do Club são liberados após a confirmação do pagamento pela equipe.</p>
+</section>
+<section class="mt-8 px-margin flex flex-col" id="auth-section"><div class="p-5 rounded-2xl bg-gradient-to-b from-[#151f32] to-[#0f172a] border border-[#23314d] shadow-lg relative overflow-hidden flex flex-col gap-4"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3"><div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 shadow-sm"><span class="material-symbols-outlined text-primary text-[24px]">workspace_premium</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="font-label-caps text-[10px] text-primary font-bold uppercase tracking-wider">B7 Barber Club</span><span class="px-1.5 py-0.5 rounded bg-emerald-400/20 text-emerald-400 text-[10px] font-bold">ASSINANTES</span></div><h2 class="font-title-sm text-title-sm text-on-surface font-bold mt-0.5 leading-tight">Login &amp; Cadastro</h2></div></div><span class="material-symbols-outlined text-on-surface-variant text-[20px]">lock</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Acesse sua conta para gerenciar seus agendamentos. Os benefícios do B7 Barber Club são exclusivos para assinantes com plano mensal ativo.</p><div class="grid grid-cols-2 gap-2.5 pt-1"><a href="#login" class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-primary hover:bg-[#be0037] text-white font-label-md text-label-md font-bold transition-all shadow-[0_2px_8px_rgba(225,29,72,0.4)] active:scale-95"><span class="material-symbols-outlined text-[18px]">login</span><span class="">Entrar</span></a><a href="#cadastro" class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#0b1120] border border-[#23314d] hover:border-primary/50 text-on-surface font-label-md text-label-md font-bold transition-all active:scale-95"><span class="material-symbols-outlined text-[18px] text-secondary">person_add</span><span class="">Criar Conta</span></a></div><div class="flex items-center justify-around pt-2 border-t border-[#23314d]/60 text-[11px] text-on-surface-variant"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-secondary text-[14px]">verified</span> Cashbacks VIP</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[14px]">history</span> Histórico Fácil</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-secondary text-[14px]">card_giftcard</span> Presentes</span></div></div></section>
+<!-- Espaçador para acomodar a barra flutuante sem sobreposição -->
+<div class="h-20 w-full"></div>
+<!-- 6. Barra Flutuante Fixa de Alta Conversão -->
+<aside class="fixed bottom-16 left-0 right-0 z-40 px-margin pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto p-3 rounded-2xl bg-[#0f172a]/95 border border-[#23314d] backdrop-blur-xl shadow-[0_12px_36px_rgba(0,0,0,0.85)] flex items-center justify-between gap-3">
+<div class="flex flex-col min-w-0 pl-1">
+<span class="font-body-sm text-[12px] text-on-surface-variant font-medium leading-none truncate" id="booking-prompt-title">
+          Pronto para cuidar do visual?
+        </span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-label-caps text-[11px] text-secondary font-bold uppercase" id="booking-total-label">
+            A partir de
+          </span>
+<span class="font-tabular-price text-title-sm text-on-surface font-bold" id="booking-price-preview">R$ 35,00</span>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-primary to-[#be0037] text-white font-title-sm text-title-sm font-bold shadow-[0_4px_18px_rgba(225,29,72,0.45)] active:scale-[0.97] transition-all shrink-0" id="cta-book" onclick="proceedToBooking()">
+<span class="">Agendar Horário</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+</div>
+<script>
+  // Estado simples da página pública
+  let selectedServices = [];
+  let chosenBarber = null;
+
+  function switchTab(button, category) {
+    const tabs = document.querySelectorAll('.category-tab');
+    tabs.forEach(tab => {
+      tab.classList.remove('active');
+      tab.classList.remove('bg-primary', 'text-white', 'font-bold', 'shadow-[0_2px_8px_rgba(225,29,72,0.4)]');
+      tab.classList.add('bg-[#151f32]', 'border', 'border-[#23314d]', 'text-on-surface-variant', 'font-semibold');
+    });
+
+  button.classList.add('active');
+    button.classList.add('bg-primary', 'text-white', 'font-bold', 'shadow-[0_2px_8px_rgba(225,29,72,0.4)]');
+    button.classList.remove('bg-[#151f32]', 'text-on-surface-variant');
+
+    const cards = document.querySelectorAll('#services-list > div');
+    cards.forEach(card => {
+      const cardCats = card.getAttribute('data-category') || '';
+      if (category === 'all' || cardCats.includes(category)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  async function loadPublicServices() {
+    const list = document.getElementById('services-list');
+    if (!list) return;
+    try {
+      const response = await fetch('/api/services');
+      if (!response.ok) return;
+      const { services } = await response.json();
+      list.replaceChildren();
+      const categoryLabels = { cabelo: 'Cabelo', barba: 'Barba', combos: 'Combos', quimica: 'Química e estética' };
+      for (const service of services) {
+        const card = document.createElement('div');
+        card.className = 'service-card p-3.5 rounded-xl bg-[#151f32] border border-[#23314d] transition-all duration-200 shadow-md flex items-center justify-between gap-3';
+        card.dataset.category = `${service.category} all`;
+        const info = document.createElement('div');
+        info.className = 'flex flex-col min-w-0 flex-1';
+        const titleRow = document.createElement('div');
+        titleRow.className = 'flex items-center gap-2';
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined text-[18px] text-primary';
+        icon.textContent = service.category === 'barba' ? 'face_6' : service.category === 'combos' ? 'auto_awesome' : service.category === 'quimica' ? 'spa' : 'content_cut';
+        const title = document.createElement('h3');
+        title.className = 'font-title-sm text-title-sm text-on-surface font-bold truncate';
+        title.textContent = service.name;
+        const category = document.createElement('span');
+        category.className = 'font-body-sm text-[12px] text-on-surface-variant mt-0.5';
+        category.textContent = categoryLabels[service.category];
+        titleRow.append(icon, title);
+        info.append(titleRow, category);
+        const actions = document.createElement('div');
+        actions.className = 'flex items-center gap-3 shrink-0';
+        const priceLine = document.createElement('div');
+        priceLine.className = 'flex items-baseline gap-1 text-right';
+        const currency = document.createElement('span');
+        currency.className = 'font-label-caps text-xs text-on-surface-variant';
+        currency.textContent = 'R$';
+        const price = document.createElement('span');
+        price.className = 'font-tabular-price text-headline-md text-on-surface font-extrabold';
+        price.textContent = service.price;
+        priceLine.append(currency, price);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'service-btn px-3.5 py-2 rounded-lg bg-[#0f172a] border border-[#23314d] hover:bg-primary hover:text-white text-on-surface font-label-md text-label-md font-bold transition-all flex items-center gap-1 active:scale-95 shadow-sm';
+        button.innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span><span>Agendar</span>';
+        button.addEventListener('click', () => toggleService(button, service.name, service.price));
+        actions.append(priceLine, button);
+        card.append(info, actions);
+        list.append(card);
+      }
+      const activeTab = document.querySelector('.category-tab.active');
+      if (activeTab) {
+        const category = activeTab.getAttribute('onclick')?.match(/'([^']+)'\s*\)$/)?.[1] || 'all';
+        list.querySelectorAll(':scope > div').forEach(card => {
+          card.style.display = category === 'all' || card.dataset.category.includes(category) ? 'flex' : 'none';
+        });
+      }
+    } catch {
+      return;
+    }
+  }
+
+  function toggleService(btn, serviceName, price) {
+    const card = btn.closest('.service-card');
+    const existingIndex = selectedServices.findIndex(s => s.name === serviceName);
+
+    if (existingIndex > -1) {
+      selectedServices.splice(existingIndex, 1);
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span><span>Agendar</span>';
+      btn.classList.remove('bg-primary', 'text-white');
+      btn.classList.add('bg-[#0f172a]', 'text-on-surface');
+      card.classList.remove('ring-2', 'ring-primary', 'bg-[#1a263e]');
+      card.classList.add('bg-[#151f32]');
+    } else {
+      selectedServices.push({ name: serviceName, price: price });
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Selecionado</span>';
+      btn.classList.add('bg-primary', 'text-white');
+      btn.classList.remove('bg-[#0f172a]', 'text-on-surface');
+      card.classList.add('ring-2', 'ring-primary', 'bg-[#1a263e]');
+      card.classList.remove('bg-[#151f32]');
+    }
+
+    updateFloatingBar();
+  }
+
+  function updateFloatingBar() {
+    const totalCount = selectedServices.length;
+    const counterEl = document.getElementById('selected-counter');
+    const titleEl = document.getElementById('booking-prompt-title');
+    const labelEl = document.getElementById('booking-total-label');
+    const priceEl = document.getElementById('booking-price-preview');
+
+    if (totalCount > 0) {
+      const totalAmount = selectedServices.reduce((acc, curr) => acc + curr.price, 0);
+      counterEl.textContent = totalCount === 1 ? '1 selecionado' : `${totalCount} selecionados`;
+      titleEl.textContent = `${totalCount} serviço${totalCount > 1 ? 's' : ''} escolhido${totalCount > 1 ? 's' : ''}`;
+      labelEl.textContent = 'Total estimado';
+      priceEl.textContent = `R$ ${totalAmount},00`;
+    } else {
+      counterEl.textContent = '0 selecionados';
+      titleEl.textContent = 'Pronto para cuidar do visual?';
+      labelEl.textContent = 'A partir de';
+      priceEl.textContent = 'R$ 35,00';
+    }
+  }
+
+  function selectSpecialist(btn, name) {
+    chosenBarber = name;
+    btn.innerText = 'Selecionado!';
+    setTimeout(() => {
+      btn.innerText = 'Escolhido';
+    }, 800);
+
+    const titleEl = document.getElementById('booking-prompt-title');
+    titleEl.textContent = `Barbeiro: ${name}`;
+  }
+
+  function toggleSchedule() {
+    const details = document.getElementById('schedule-details');
+    const icon = document.getElementById('hours-icon');
+    if (details.classList.contains('hidden')) {
+      details.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      details.classList.add('hidden');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  function triggerHaptic(type) {
+    if (navigator.vibrate) {
+      navigator.vibrate(25);
+    }
+    if (type === 'maps') {
+      window.open('https://maps.google.com/?q=Estrada+de+Curicica,+136,+Curicica,+Rio+de+Janeiro,+RJ', '_blank');
+    }
+  }
+
+  function shareShop() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'B7 Barber Club',
+        text: 'Cortes clássicos e estética masculina de alta precisão em Curicica, Rio de Janeiro.',
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      navigator.clipboard?.writeText(window.location.href).then(() => {
+        alert('Link copiado para a área de transferência.');
+      }).catch(() => {
+        window.prompt('Copie o link da B7 Barber:', window.location.href);
+      });
+    }
+  }
+
+  function proceedToBooking() {
+    document.getElementById('services-list')?.scrollIntoView({ behavior: 'smooth' });
+  }
+  document.getElementById('auth-section')?.addEventListener('click', (event) => {
+    const authLink = event.target.closest('a[href="#login"], a[href="#cadastro"]');
+    if (!authLink) return;
+    event.preventDefault();
+    const mode = authLink.hash === '#cadastro' ? 'register' : 'login';
+    window.location.href = `login.html?mode=${mode}`;
+  });
+  document.addEventListener('click', (event) => {
+    const barbersLink = event.target.closest('nav a[data-path="master-barbers"]');
+    if (!barbersLink) return;
+    event.preventDefault();
+    window.location.href = 'barbers.html';
+  });
+  document.addEventListener('click', (event) => {
+    const clubLink = event.target.closest('nav a[data-path="club-membership"]');
+    if (!clubLink) return;
+    event.preventDefault();
+    document.getElementById('club-membership')?.scrollIntoView({ behavior: 'smooth' });
+  });
+  async function updateAccountSection() {
+    const section = document.getElementById('auth-section');
+    if (!section) return;
+    try {
+      const response = await fetch('/api/me', { credentials: 'same-origin' });
+      if (!response.ok) return;
+      const { user, authenticated, subscription } = await response.json();
+      if (!authenticated || !user) return;
+      const heading = section.querySelector('h2');
+      const description = section.querySelector('p');
+      const actions = section.querySelector('.grid.grid-cols-2');
+      let adminLink = null;
+      if (!heading || !description || !actions) return;
+
+      heading.textContent = `Olá, ${user.name}`;
+      if (subscription?.active) {
+        const nextPayment = subscription.next_payment_date
+          ? new Date(subscription.next_payment_date).toLocaleDateString('pt-BR')
+          : 'data não informada';
+        description.textContent = `Assinatura ativa: plano ${subscription.plan_name}. Próxima cobrança: ${nextPayment}.`;
+      } else if (subscription?.status === 'authorized') {
+        description.textContent = `Plano ${subscription.plan_name} autorizado; aguardando confirmação da primeira cobrança para liberar os benefícios do Club.`;
+      } else if (subscription) {
+        description.textContent = `Plano ${subscription.plan_name} ${subscription.status === 'cancelled' ? 'cancelado' : 'aguardando pagamento'}. Os benefícios só são liberados após a confirmação da cobrança.`;
+      } else {
+        description.textContent = `Sessão ativa para ${user.email}. Os benefícios do B7 Barber Club são exclusivos para assinantes com plano mensal ativo.`;
+      }
+      if (user.role === 'admin') {
+        adminLink = document.createElement('a');
+        adminLink.href = 'admin.html';
+        adminLink.className = 'col-span-2 flex items-center justify-center gap-2 rounded-xl bg-primary px-3 py-2.5 font-label-md text-label-md font-bold text-white transition-colors hover:bg-[#be0037]';
+        adminLink.textContent = 'Abrir administração';
+      }
+      const logoutButton = document.createElement('button');
+      logoutButton.type = 'button';
+      logoutButton.className = 'flex items-center justify-center gap-2 rounded-xl border border-[#23314d] bg-[#0b1120] px-3 py-2.5 font-label-md text-label-md font-bold text-on-surface transition-colors hover:border-primary/50';
+      logoutButton.textContent = 'Sair da conta';
+      logoutButton.addEventListener('click', async () => {
+        logoutButton.disabled = true;
+        try {
+          await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' });
+          window.location.reload();
+        } catch {
+          logoutButton.disabled = false;
+        }
+      });
+      actions.replaceChildren(logoutButton);
+      if (adminLink) actions.prepend(adminLink);
+    } catch {
+      return;
+    }
+  }
+  loadPublicServices();
+  updateAccountSection();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#0b1120]/95 border-t border-[#23314d]/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.6)]" data-active-classes="text-primary font-bold"><div class="h-16 px-space-sm flex items-center justify-around"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] transition-colors text-primary font-bold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">content_cut</span><span class="font-label-caps text-label-caps tracking-wider uppercase mt-0.5">Services</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors hover:text-on-surface" data-path="master-barbers" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-caps text-label-caps tracking-wider uppercase mt-0.5">Barbers</span></a><a class="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white -mt-5 shadow-[0_4px_16px_rgba(225,29,72,0.5)] transition-transform active:scale-95" data-path="book-appointment" href="#"><span class="material-symbols-outlined text-[26px]">calendar_month</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant transition-colors hover:text-on-surface" data-path="club-membership" href="#"><span class="material-symbols-outlined text-[22px]">workspace_premium</span><span class="font-label-caps text-label-caps tracking-wider uppercase mt-0.5">Club</span></a></div></nav>
+
+
+
+
+
+
+
+
+</body></html>

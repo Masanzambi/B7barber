@@ -1,0 +1,21 @@
+{
+  "name": "Barber",
+  "type": "object",
+  "title": "Barbeiro B7",
+  "properties": {
+    "name": { "type": "string", "maxLength": 80 },
+    "specialty": { "type": "string", "maxLength": 120 },
+    "image_url": { "type": "string", "maxLength": 500 },
+    "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+    "review_count": { "type": "integer", "minimum": 0 },
+    "active": { "type": "boolean", "default": true },
+    "sort_order": { "type": "integer", "minimum": 0 }
+  },
+  "required": ["name", "active"],
+  "rls": {
+    "create": { "user_condition": { "role": "admin" } },
+    "read": true,
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}

@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.env
+b7barber.sqlite3
+b7barber.sqlite3-shm
+b7barber.sqlite3-wal

@@ -1,0 +1,19 @@
+{
+  "name": "BarberAvailability",
+  "type": "object",
+  "title": "Disponibilidade do barbeiro",
+  "properties": {
+    "barber_name": { "type": "string", "maxLength": 80 },
+    "date": { "type": "string", "format": "date" },
+    "hour": { "type": "integer", "minimum": 8, "maximum": 21 },
+    "is_available": { "type": "boolean" },
+    "updated_by": { "type": "string", "maxLength": 255 }
+  },
+  "required": ["barber_name", "date", "hour", "is_available"],
+  "rls": {
+    "create": { "user_condition": { "role": "admin" } },
+    "read": true,
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}

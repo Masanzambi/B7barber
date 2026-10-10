@@ -1,0 +1,29 @@
+{
+  "name": "BookingRequest",
+  "type": "object",
+  "title": "Solicitação de horário",
+  "properties": {
+    "user_id": { "type": "string", "maxLength": 100 },
+    "user_name": { "type": "string", "maxLength": 120 },
+    "user_email": { "type": "string", "format": "email", "maxLength": 254 },
+    "user_phone": { "type": "string", "maxLength": 20 },
+    "service_name": { "type": "string", "maxLength": 80 },
+    "barber_name": { "type": "string", "enum": ["Artur", "Fabio", "Ricardo"] },
+    "date": { "type": "string", "format": "date" },
+    "hour": { "type": "integer", "minimum": 8, "maximum": 21 },
+    "status": { "type": "string", "enum": ["pending", "confirmed", "declined", "cancelled"], "default": "pending" },
+    "admin_note": { "type": "string", "maxLength": 300 }
+  },
+  "required": ["user_id", "user_name", "user_email", "service_name", "barber_name", "date", "hour", "status"],
+  "rls": {
+    "create": { "created_by": "{{user.email}}" },
+    "read": {
+      "$or": [
+        { "data.user_id": "{{user.id}}" },
+        { "user_condition": { "role": "admin" } }
+      ]
+    },
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}

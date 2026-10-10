@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b14">
+  <title>Administração | B7 Barber</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>tailwind.config={theme:{extend:{colors:{background:'#070b14',surface:'#0b1120',panel:'#151f32',line:'#23314d',ink:'#dde2f8',muted:'#94a3b8',primary:'#e11d48',secondary:'#7bd0ff'},fontFamily:{sans:['Plus Jakarta Sans','sans-serif']}}}};</script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #070b14; color: #dde2f8; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .safe-top { padding-top: env(safe-area-inset-top, 0px); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .nav-tab[aria-selected="true"] { color: #fff; background: #e11d48; border-color: #e11d48; }
+    .admin-slot[aria-pressed="true"] { background: #123b35; border-color: #38b59a; color: #a7f3d0; }
+    .admin-slot[aria-pressed="false"] { background: #3a202b; border-color: #a33a59; color: #fecdd3; }
+    :focus-visible { outline: 2px solid #7bd0ff; outline-offset: 2px; }
+  </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+  <header class="safe-top sticky top-0 z-20 border-b border-line/70 bg-surface/95 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <a href="index.html" class="flex min-w-0 items-center gap-3 text-sm font-extrabold"><span class="material-symbols-outlined text-primary" aria-hidden="true">content_cut</span><span>B7 Barber <span class="font-medium text-muted">/ Administração</span></span></a>
+      <div class="flex items-center gap-3"><span id="admin-name" class="hidden max-w-40 truncate text-sm text-muted sm:block"></span><button id="logout-button" type="button" class="hidden min-h-10 items-center gap-2 rounded-md border border-line px-3 text-sm font-semibold text-ink hover:bg-panel"><span class="material-symbols-outlined text-lg" aria-hidden="true">logout</span>Sair</button></div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6">
+    <section id="login-screen" class="mx-auto mt-8 max-w-md border-y border-line py-7">
+      <p class="text-xs font-bold uppercase tracking-widest text-secondary">Área restrita</p>
+      <h1 class="mt-2 text-2xl font-extrabold">Entrar na administração</h1>
+      <p class="mt-2 text-sm leading-6 text-muted">Use uma conta que recebeu perfil de administrador.</p>
+      <form id="admin-login-form" class="mt-6 space-y-4">
+        <label class="block text-sm font-semibold">Usuário ou e-mail
+          <input id="admin-identifier" type="text" required autocomplete="username" class="mt-1.5 h-11 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink">
+        </label>
+        <label class="block text-sm font-semibold">Senha
+          <input id="admin-password" type="password" required autocomplete="current-password" class="mt-1.5 h-11 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink">
+        </label>
+        <button type="submit" class="flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-white hover:bg-rose-700"><span class="material-symbols-outlined text-lg" aria-hidden="true">lock_open</span>Entrar</button>
+      </form>
+      <p id="login-error" class="mt-4 min-h-5 text-sm text-rose-300" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section id="admin-panel" class="hidden">
+      <div class="flex flex-col justify-between gap-2 border-b border-line pb-6 sm:flex-row sm:items-end">
+        <div><p class="text-xs font-bold uppercase tracking-widest text-secondary">Painel de controle</p><h1 class="mt-2 text-2xl font-extrabold sm:text-3xl">Visão geral</h1><p class="mt-2 text-sm text-muted">Gerencie contas, catálogo e horários da equipe.</p></div>
+        <p id="admin-feedback" class="min-h-5 text-sm text-emerald-300" role="status" aria-live="polite"></p>
+      </div>
+
+      <section class="mt-6 grid grid-cols-2 gap-x-5 border-y border-line sm:grid-cols-4" aria-label="Indicadores">
+        <div class="py-4"><p class="text-xs font-semibold text-muted">Clientes cadastrados</p><p id="metric-customers" class="mt-1 text-2xl font-extrabold">0</p></div>
+        <div class="py-4"><p class="text-xs font-semibold text-muted">Contas ativas</p><p id="metric-active-customers" class="mt-1 text-2xl font-extrabold">0</p></div>
+        <div class="py-4"><p class="text-xs font-semibold text-muted">Serviços publicados</p><p id="metric-services" class="mt-1 text-2xl font-extrabold">0</p></div>
+        <div class="py-4"><p class="text-xs font-semibold text-muted">Faixas ocupadas hoje</p><p id="metric-unavailable" class="mt-1 text-2xl font-extrabold">0</p></div>
+      </section>
+
+      <nav class="mt-6 flex flex-wrap gap-2 border-b border-line pb-4" aria-label="Seções administrativas">
+        <button class="nav-tab rounded-md border border-line px-4 py-2 text-sm font-bold text-muted" data-panel="customers-panel" aria-selected="true" type="button">Contas</button>
+        <button class="nav-tab rounded-md border border-line px-4 py-2 text-sm font-bold text-muted" data-panel="services-panel" aria-selected="false" type="button">Serviços e preços</button>
+        <button class="nav-tab rounded-md border border-line px-4 py-2 text-sm font-bold text-muted" data-panel="availability-panel" aria-selected="false" type="button">Horários</button>
+        <button class="nav-tab rounded-md border border-line px-4 py-2 text-sm font-bold text-muted" data-panel="cashflow-panel" aria-selected="false" type="button">Fluxo de caixa</button>
+      </nav>
+
+      <section id="customers-panel" class="admin-content pt-5">
+        <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-lg font-bold">Contas cadastradas</h2><p class="mt-1 text-sm text-muted">Desativar uma conta encerra imediatamente as sessões existentes.</p></div><label class="text-xs font-semibold text-muted">Buscar<input id="user-search" type="search" placeholder="Nome, e-mail ou telefone" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink sm:w-72"></label></div>
+        <div class="overflow-x-auto border-y border-line"><table class="w-full min-w-[760px] text-left text-sm"><thead class="text-xs uppercase text-muted"><tr><th class="py-3 pr-4">Cliente</th><th class="py-3 pr-4">Telefone</th><th class="py-3 pr-4">Perfil</th><th class="py-3 pr-4">Cadastro</th><th class="py-3 pr-4">Estado</th><th class="py-3">Ação</th></tr></thead><tbody id="users-table" class="divide-y divide-line"></tbody></table></div>
+      </section>
+
+      <section id="services-panel" class="admin-content hidden pt-5">
+        <div class="mb-5"><h2 class="text-lg font-bold">Catálogo de serviços</h2><p class="mt-1 text-sm text-muted">Alterações de preço e publicação aparecem no site sem editar o HTML.</p></div>
+        <form id="service-create-form" class="grid gap-3 border-y border-line py-4 sm:grid-cols-[minmax(0,1fr)_130px_180px_auto] sm:items-end">
+          <label class="text-xs font-semibold text-muted">Novo serviço<input name="name" required maxlength="80" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label>
+          <label class="text-xs font-semibold text-muted">Preço (R$)<input name="price" type="number" min="0" max="10000" step="1" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label>
+          <label class="text-xs font-semibold text-muted">Categoria<select name="category" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"><option value="cabelo">Cabelo</option><option value="barba">Barba</option><option value="combos">Combos</option><option value="quimica">Química e estética</option></select></label>
+          <button type="submit" class="flex h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-white"><span class="material-symbols-outlined text-lg" aria-hidden="true">add</span>Adicionar</button>
+        </form>
+        <div id="services-list" class="divide-y divide-line"></div>
+      </section>
+
+      <section id="availability-panel" class="admin-content hidden pt-5">
+        <div class="flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-end sm:justify-between"><div><h2 class="text-lg font-bold">Disponibilidade da equipe</h2><p class="mt-1 text-sm text-muted">Cada faixa vai de HH:00 até HH:59. Os estados são compartilhados com a página de barbeiros.</p></div><label class="text-xs font-semibold text-muted">Data<input id="availability-date" type="date" class="mt-1 block h-10 rounded-md border border-line bg-surface px-3 text-sm text-ink [color-scheme:dark]"></label></div>
+        <div class="mt-4 flex flex-wrap gap-5 text-xs text-muted"><span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>Livre</span><span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span>Ocupado</span></div>
+        <div id="availability-grid" class="mt-4 divide-y divide-line border-y border-line"></div>
+      </section>
+      <section id="cashflow-panel" class="admin-content hidden pt-5">
+        <div class="border-b border-line pb-5"><h2 class="text-lg font-bold">Fluxo de caixa</h2><p class="mt-1 text-sm text-muted">Registre receitas e despesas para acompanhar o lucro de cada barbeiro. O lucro é calculado como entradas menos saídas.</p></div>
+        <div id="cashflow-summaries" class="grid gap-6 border-b border-line py-5 lg:grid-cols-3"></div>
+        <form id="cash-entry-form" class="grid gap-3 border-b border-line py-5 sm:grid-cols-2 lg:grid-cols-[150px_150px_minmax(0,1fr)_150px_150px_auto] lg:items-end">
+          <label class="text-xs font-semibold text-muted">Barbeiro<select name="barber" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"><option>Artur</option><option>Fabio</option><option>Ricardo</option></select></label>
+          <label class="text-xs font-semibold text-muted">Tipo<select name="type" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"><option value="income">Entrada</option><option value="expense">Saída</option></select></label>
+          <label class="text-xs font-semibold text-muted">Descrição<input name="description" required maxlength="120" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label>
+          <label class="text-xs font-semibold text-muted">Valor (R$)<input name="amount" type="number" min="0.01" max="1000000" step="0.01" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label>
+          <label class="text-xs font-semibold text-muted">Data<input name="date" type="date" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink [color-scheme:dark]"></label>
+          <button type="submit" class="flex h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-white"><span class="material-symbols-outlined text-lg" aria-hidden="true">add</span>Registrar</button>
+        </form>
+        <div class="pt-5"><h3 class="mb-3 text-base font-bold">Lançamentos recentes</h3><div class="overflow-x-auto border-y border-line"><table class="w-full min-w-[720px] text-left text-sm"><thead class="text-xs uppercase text-muted"><tr><th class="py-3 pr-4">Data</th><th class="py-3 pr-4">Barbeiro</th><th class="py-3 pr-4">Tipo</th><th class="py-3 pr-4">Descrição</th><th class="py-3 pr-4">Valor</th><th class="py-3">Ação</th></tr></thead><tbody id="cash-entries" class="divide-y divide-line"></tbody></table></div></div>
+      </section>
+      <p class="mt-8 border-t border-line pt-4 text-xs leading-5 text-muted">Este painel não inclui reservas: o site ainda não possui fluxo de agendamento persistido. As faixas ocupadas são ajustes manuais de disponibilidade.</p>
+    </section>
+  </main>
+
+  <script>
+    const loginScreen = document.getElementById('login-screen');
+    const adminPanel = document.getElementById('admin-panel');
+    const feedback = document.getElementById('admin-feedback');
+    const logoutButton = document.getElementById('logout-button');
+    const barbers = ['Artur', 'Fabio', 'Ricardo'];
+    const hours = Array.from({ length: 14 }, (_, index) => index + 8);
+    const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    document.getElementById('availability-date').value = today;
+
+    async function api(path, options = {}) {
+      const response = await fetch(path, { credentials: 'same-origin', ...options });
+      if (response.status === 204) return {};
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        const body = (await response.text()).trim();
+        if (!response.ok && response.status === 403 && /^forbidden\.?$/i.test(body)) {
+          throw new Error(`O servidor bloqueou ${path} (HTTP 403). A página pode estar aberta por outro servidor, como o Live Server. Abra o painel pelo servidor Python do B7 Barber, no mesmo endereço e porta usados pela API.`);
+        }
+        throw new Error(`Resposta inesperada de ${path} (HTTP ${response.status}): ${body.slice(0, 160) || 'conteúdo sem JSON'}`);
+      }
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error(`O servidor retornou JSON inválido para ${path} (HTTP ${response.status}).`);
+      }
+      if (!response.ok) throw new Error(data.error || 'Não foi possível concluir a operação.');
+      return data;
+    }
+
+    function notify(message, isError = false) {
+      feedback.textContent = message;
+      feedback.className = `min-h-5 text-sm ${isError ? 'text-rose-300' : 'text-emerald-300'}`;
+    }
+
+    async function loadPanel() {
+      const [summary, users, services] = await Promise.all([
+        api('/api/admin/summary'), api('/api/admin/users'), api('/api/admin/services')
+      ]);
+      document.getElementById('metric-customers').textContent = summary.summary.customers;
+      document.getElementById('metric-active-customers').textContent = summary.summary.active_customers;
+      document.getElementById('metric-services').textContent = summary.summary.active_services;
+      document.getElementById('metric-unavailable').textContent = summary.summary.unavailable_slots_today;
+      renderUsers(users.users);
+      renderServices(services.services);
+      await Promise.all([renderAvailability(), renderCashflow()]);
+    }
+
+    async function renderCashflow() {
+      const { summary, entries } = await api('/api/admin/cashflow');
+      const summaries = document.getElementById('cashflow-summaries');
+      summaries.replaceChildren();
+      const periods = [['week', 'Esta semana'], ['month', 'Este mês'], ['year', 'Este ano']];
+      for (const [key, title] of periods) {
+        const period = summary[key];
+        const section = document.createElement('section');
+        section.className = 'min-w-0';
+        const heading = document.createElement('h3');
+        heading.className = 'mb-1 font-bold';
+        heading.textContent = title;
+        const dates = document.createElement('p');
+        dates.className = 'mb-3 text-xs text-muted';
+        dates.textContent = `${period.start_date.split('-').reverse().join('/')} a ${period.end_date.split('-').reverse().join('/')}`;
+        const table = document.createElement('table');
+        table.className = 'w-full text-left text-xs';
+        table.innerHTML = '<thead class="border-b border-line text-muted"><tr><th class="py-2 pr-2">Barbeiro</th><th class="py-2 pr-2">Entradas</th><th class="py-2 pr-2">Saídas</th><th class="py-2">Lucro</th></tr></thead>';
+        const body = document.createElement('tbody');
+        for (const barber of period.barbers) {
+          const row = document.createElement('tr');
+          row.className = 'border-b border-line/60';
+          for (const value of [barber.name, money.format(barber.income_cents / 100), money.format(barber.expense_cents / 100), money.format(barber.profit_cents / 100)]) {
+            const cell = document.createElement('td');
+            cell.className = 'py-2 pr-2';
+            cell.textContent = value;
+            row.append(cell);
+          }
+          body.append(row);
+        }
+        const total = document.createElement('p');
+        total.className = `mt-3 text-sm font-bold ${period.profit_cents >= 0 ? 'text-emerald-300' : 'text-rose-300'}`;
+        total.textContent = `Lucro total: ${money.format(period.profit_cents / 100)}`;
+        table.append(body);
+        section.append(heading, dates, table, total);
+        summaries.append(section);
+      }
+
+      const body = document.getElementById('cash-entries');
+      body.replaceChildren();
+      if (!entries.length) {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="6" class="py-6 text-center text-sm text-muted">Nenhum lançamento registrado.</td>';
+        body.append(row);
+        return;
+      }
+      for (const entry of entries) {
+        const row = document.createElement('tr');
+        const values = [entry.date.split('-').reverse().join('/'), entry.barber, entry.type === 'income' ? 'Entrada' : 'Saída', entry.description, money.format(entry.amount_cents / 100)];
+        for (const value of values) {
+          const cell = document.createElement('td');
+          cell.className = 'py-3 pr-4';
+          cell.textContent = value;
+          row.append(cell);
+        }
+        const action = document.createElement('td');
+        action.className = 'py-3';
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'rounded-md border border-line px-3 py-1.5 text-xs font-bold text-rose-300 hover:bg-panel';
+        remove.textContent = 'Excluir';
+        remove.addEventListener('click', async () => {
+          remove.disabled = true;
+          try {
+            await api(`/api/admin/cashflow/${entry.id}`, { method: 'DELETE' });
+            await renderCashflow();
+            notify('Lançamento removido.');
+          } catch (error) { notify(error.message, true); remove.disabled = false; }
+        });
+        action.append(remove);
+        row.append(action);
+        body.append(row);
+      }
+    }
+
+    function renderUsers(users) {
+      const query = document.getElementById('user-search').value.trim().toLocaleLowerCase('pt-BR');
+      const body = document.getElementById('users-table');
+      body.replaceChildren();
+      const filtered = users.filter(user => `${user.name} ${user.email} ${user.phone}`.toLocaleLowerCase('pt-BR').includes(query));
+      if (!filtered.length) {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="6" class="py-6 text-center text-sm text-muted">Nenhuma conta encontrada.</td>';
+        body.append(row);
+        return;
+      }
+      for (const user of filtered) {
+        const row = document.createElement('tr');
+        const name = document.createElement('td');
+        name.className = 'py-3 pr-4';
+        name.innerHTML = `<span class="font-semibold text-ink"></span><span class="block text-xs text-muted"></span>`;
+        name.children[0].textContent = user.name;
+        name.children[1].textContent = user.email;
+        const phone = document.createElement('td'); phone.className = 'py-3 pr-4 text-muted'; phone.textContent = user.phone;
+        const role = document.createElement('td'); role.className = 'py-3 pr-4 text-muted'; role.textContent = user.role === 'admin' ? 'Administrador' : 'Cliente';
+        const created = document.createElement('td'); created.className = 'py-3 pr-4 text-muted'; created.textContent = new Date(user.created_at).toLocaleDateString('pt-BR');
+        const state = document.createElement('td'); state.className = `py-3 pr-4 font-semibold ${user.is_active ? 'text-emerald-300' : 'text-rose-300'}`; state.textContent = user.is_active ? 'Ativa' : 'Desativada';
+        const action = document.createElement('td'); action.className = 'py-3';
+        if (user.role === 'admin') action.textContent = 'Acesso admin';
+        else {
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = 'rounded-md border border-line px-3 py-1.5 text-xs font-bold hover:bg-panel';
+          button.textContent = user.is_active ? 'Desativar' : 'Reativar';
+          button.addEventListener('click', async () => {
+            button.disabled = true;
+            try { await api(`/api/admin/users/${user.id}/active`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ is_active: !user.is_active }) }); await loadPanel(); notify('Estado da conta atualizado.'); }
+            catch (error) { notify(error.message, true); button.disabled = false; }
+          });
+          action.append(button);
+        }
+        row.append(name, phone, role, created, state, action); body.append(row);
+      }
+    }
+
+    function renderServices(services) {
+      const list = document.getElementById('services-list');
+      list.replaceChildren();
+      for (const service of services) {
+        const form = document.createElement('form');
+        form.className = 'grid gap-3 py-4 sm:grid-cols-[minmax(0,1fr)_120px_170px_110px_auto_auto] sm:items-end';
+        form.dataset.serviceId = service.id;
+        form.innerHTML = `<label class="text-xs font-semibold text-muted">Nome<input name="name" required maxlength="80" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label><label class="text-xs font-semibold text-muted">Preço<input name="price" type="number" min="0" max="10000" required class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"></label><label class="text-xs font-semibold text-muted">Categoria<select name="category" class="mt-1 block h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink"><option value="cabelo">Cabelo</option><option value="barba">Barba</option><option value="combos">Combos</option><option value="quimica">Química e estética</option></select></label><label class="flex h-10 items-center gap-2 text-xs font-semibold text-muted"><input name="is_active" type="checkbox" class="rounded border-line bg-surface text-primary">Publicado</label><button type="submit" class="h-10 rounded-md bg-panel px-4 text-sm font-bold hover:bg-line">Salvar</button><button type="button" class="h-10 rounded-md px-3 text-sm font-semibold text-rose-300 hover:bg-rose-950/40" data-archive>Arquivar</button>`;
+        form.elements.name.value = service.name;
+        form.elements.price.value = service.price;
+        form.elements.category.value = service.category;
+        form.elements.is_active.checked = service.is_active;
+        form.elements.name.disabled = !service.is_active;
+        form.elements.price.disabled = !service.is_active;
+        form.elements.category.disabled = !service.is_active;
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const button = form.querySelector('[type="submit"]'); button.disabled = true;
+          try {
+            await api(`/api/admin/services/${service.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: form.elements.name.value, price: form.elements.price.value, category: form.elements.category.value, is_active: form.elements.is_active.checked }) });
+            await loadPanel(); notify('Serviço atualizado.');
+          } catch (error) { notify(error.message, true); button.disabled = false; }
+        });
+        const toggleServiceButton = form.querySelector('[data-archive]');
+        toggleServiceButton.textContent = service.is_active ? 'Arquivar' : 'Reativar';
+        toggleServiceButton.addEventListener('click', async () => {
+          try {
+            if (service.is_active) {
+              await api(`/api/admin/services/${service.id}`, { method: 'DELETE' });
+              notify('Serviço arquivado.');
+            } else {
+              await api(`/api/admin/services/${service.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: service.name, price: service.price, category: service.category, is_active: true }) });
+              notify('Serviço reativado.');
+            }
+            await loadPanel();
+          } catch (error) { notify(error.message, true); }
+        });
+        list.append(form);
+      }
+    }
+
+    async function renderAvailability() {
+      const date = document.getElementById('availability-date').value;
+      const { availability } = await api(`/api/admin/availability?date=${encodeURIComponent(date)}`);
+      const grid = document.getElementById('availability-grid'); grid.replaceChildren();
+      for (const barber of barbers) {
+        const row = document.createElement('div'); row.className = 'grid gap-3 py-4 lg:grid-cols-[180px_minmax(0,1fr)] lg:items-center';
+        const title = document.createElement('h3'); title.className = 'font-bold'; title.textContent = barber;
+        const slots = document.createElement('div'); slots.className = 'grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-7';
+        for (const hour of hours) {
+          const free = availability[barber]?.[String(hour)] !== false;
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = 'admin-slot min-h-[56px] rounded-md border px-2 py-2 text-left text-xs font-semibold';
+          button.setAttribute('aria-pressed', String(free));
+          button.setAttribute('aria-label', `${barber} ${String(hour).padStart(2, '0')}:00, ${free ? 'livre' : 'ocupado'}`);
+          button.innerHTML = `<span class="block font-bold">${String(hour).padStart(2, '0')}:00–${String(hour).padStart(2, '0')}:59</span><span class="block pt-1" data-label></span>`;
+          button.querySelector('[data-label]').textContent = free ? 'Livre' : 'Ocupado';
+          button.addEventListener('click', async () => {
+            button.disabled = true;
+            try {
+              await api('/api/admin/availability', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ barber, date, hour, is_available: !free }) });
+              await renderAvailability(); await refreshSummary(); notify('Disponibilidade compartilhada e atualizada.');
+            } catch (error) { notify(error.message, true); button.disabled = false; }
+          });
+          slots.append(button);
+        }
+        row.append(title, slots); grid.append(row);
+      }
+    }
+
+    async function refreshSummary() {
+      const { summary } = await api('/api/admin/summary');
+      document.getElementById('metric-customers').textContent = summary.customers;
+      document.getElementById('metric-active-customers').textContent = summary.active_customers;
+      document.getElementById('metric-services').textContent = summary.active_services;
+      document.getElementById('metric-unavailable').textContent = summary.unavailable_slots_today;
+    }
+
+    async function enterAdmin(user) {
+      if (user.role !== 'admin' || !user.is_active) {
+        await api('/api/logout', { method: 'POST' }).catch(() => {});
+        throw new Error('Esta conta não tem permissão de administrador.');
+      }
+      document.getElementById('admin-name').textContent = user.name;
+      loginScreen.classList.add('hidden'); adminPanel.classList.remove('hidden'); logoutButton.classList.remove('hidden');
+      await loadPanel();
+    }
+
+    document.getElementById('admin-login-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const error = document.getElementById('login-error'); error.textContent = '';
+      try {
+        const result = await api('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ identifier: document.getElementById('admin-identifier').value, password: document.getElementById('admin-password').value }) });
+        await enterAdmin(result.user);
+      } catch (reason) { error.textContent = reason.message; }
+    });
+
+    document.querySelectorAll('.nav-tab').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.setAttribute('aria-selected', String(tab === button)));
+      document.querySelectorAll('.admin-content').forEach(panel => panel.classList.toggle('hidden', panel.id !== button.dataset.panel));
+    }));
+    document.getElementById('user-search').addEventListener('input', async () => {
+      try { renderUsers((await api('/api/admin/users')).users); } catch (error) { notify(error.message, true); }
+    });
+    document.getElementById('service-create-form').addEventListener('submit', async event => {
+      event.preventDefault(); const form = event.currentTarget; const button = form.querySelector('[type="submit"]'); button.disabled = true;
+      try {
+        await api('/api/admin/services', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: form.elements.name.value, price: form.elements.price.value, category: form.elements.category.value, is_active: true }) });
+        form.reset(); await loadPanel(); notify('Serviço adicionado ao catálogo.');
+      } catch (error) { notify(error.message, true); } finally { button.disabled = false; }
+    });
+    document.getElementById('availability-date').addEventListener('change', () => renderAvailability().catch(error => notify(error.message, true)));
+    const cashEntryForm = document.getElementById('cash-entry-form');
+    cashEntryForm.elements.date.value = today;
+    cashEntryForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const button = cashEntryForm.querySelector('[type="submit"]');
+      button.disabled = true;
+      try {
+        await api('/api/admin/cashflow', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ barber: cashEntryForm.elements.barber.value, type: cashEntryForm.elements.type.value, description: cashEntryForm.elements.description.value, amount: cashEntryForm.elements.amount.value, date: cashEntryForm.elements.date.value }) });
+        cashEntryForm.elements.description.value = '';
+        cashEntryForm.elements.amount.value = '';
+        await renderCashflow();
+        notify('Lançamento registrado.');
+      } catch (error) { notify(error.message, true); } finally { button.disabled = false; }
+    });
+    logoutButton.addEventListener('click', async () => {
+      await api('/api/logout', { method: 'POST' }).catch(() => {});
+      window.location.reload();
+    });
+
+    api('/api/me').then(({ authenticated, user }) => {
+      if (authenticated && user) return enterAdmin(user);
+    }).catch(error => {
+      if (adminPanel.classList.contains('hidden')) {
+        document.getElementById('login-error').textContent = error.message;
+      } else {
+        notify(error.message, true);
+      }
+    });
+  </script>
+</body>
+</html>

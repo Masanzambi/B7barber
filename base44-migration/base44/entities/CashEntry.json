@@ -1,0 +1,19 @@
+{
+  "name": "CashEntry",
+  "type": "object",
+  "title": "Lançamento do caixa",
+  "properties": {
+    "barber_name": { "type": "string", "enum": ["Artur", "Fabio", "Ricardo"] },
+    "entry_type": { "type": "string", "enum": ["income", "expense"] },
+    "amount_cents": { "type": "integer", "minimum": 1, "maximum": 100000000 },
+    "description": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "entry_date": { "type": "string", "format": "date" }
+  },
+  "required": ["barber_name", "entry_type", "amount_cents", "description", "entry_date"],
+  "rls": {
+    "create": { "user_condition": { "role": "admin" } },
+    "read": { "user_condition": { "role": "admin" } },
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}

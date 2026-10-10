@@ -1,0 +1,34 @@
+{
+  "name": "ClubSubscription",
+  "type": "object",
+  "title": "Assinatura B7 Barber Club",
+  "properties": {
+    "user_id": { "type": "string", "maxLength": 100 },
+    "plan_code": {
+      "type": "string",
+      "enum": ["corte", "barba", "corte-barba"]
+    },
+    "amount_cents": { "type": "integer", "minimum": 1 },
+    "external_reference": { "type": "string", "maxLength": 100 },
+    "mp_subscription_id": { "type": "string", "maxLength": 100 },
+    "status": {
+      "type": "string",
+      "enum": ["creating", "pending", "authorized", "paused", "cancelled", "rejected", "checkout_failed"]
+    },
+    "latest_payment_status": {
+      "type": "string",
+      "enum": ["processed", "recycling", "waiting for gateway", "cancelled"]
+    },
+    "latest_payment_id": { "type": "string", "maxLength": 100 },
+    "latest_payment_at": { "type": "string", "format": "date-time" },
+    "next_payment_date": { "type": "string", "format": "date-time" },
+    "checkout_url": { "type": "string", "maxLength": 1000 }
+  },
+  "required": ["user_id", "plan_code", "amount_cents", "external_reference", "status"],
+  "rls": {
+    "create": false,
+    "read": false,
+    "update": false,
+    "delete": false
+  }
+}

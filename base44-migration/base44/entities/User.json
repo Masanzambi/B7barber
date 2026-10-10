@@ -1,0 +1,15 @@
+{
+  "name": "User",
+  "type": "object",
+  "title": "Usuário B7",
+  "properties": {
+    "phone": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "display_name": {
+      "type": "string",
+      "maxLength": 120
+    }
+  }
+}

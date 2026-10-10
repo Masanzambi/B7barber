@@ -1,0 +1,13 @@
+{
+  "name": "b7-barber-club",
+  "description": "B7 Barber Club: agendamentos, equipe e assinaturas mensais.",
+  "visibility": "public",
+  "functionsDir": "./functions",
+  "entitiesDir": "./entities",
+  "authDir": "./auth",
+  "site": {
+    "outputDirectory": "dist",
+    "buildCommand": "npm run build",
+    "serveCommand": "npm run dev"
+  }
+}
